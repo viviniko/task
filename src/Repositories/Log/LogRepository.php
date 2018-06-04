@@ -4,7 +4,7 @@ namespace Viviniko\Task\Repositories\Log;
 
 interface LogRepository
 {
-    public function paginate($perPage, $search = []);
+    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
 
     /**
      * Find log by its id.
