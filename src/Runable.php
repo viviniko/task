@@ -5,6 +5,7 @@ namespace Viviniko\Task;
 use Carbon\Carbon;
 use Closure;
 use Viviniko\Task\Contracts\TaskService;
+use Viviniko\Task\Enums\TaskMode;
 use Viviniko\Task\Models\Task;
 use Illuminate\Console\Command;
 
@@ -40,7 +41,7 @@ class Runable
 
     public function run(Closure $closure)
     {
-        if ($this->task->is_running) {
+        if ($this->task->mode == TaskMode::SINGLE && $this->task->is_running) {
             $this->taskService->updateTask($this->task->id, ['message' => 'Task is running.']);
             return;
         }
@@ -58,6 +59,16 @@ class Runable
             $this->taskService->updateTask($this->task->id, ['is_running' => false, 'end_time' => new Carbon, 'message' => $message]);
             if ($this->task->is_log) $this->taskService->log($this->task->id);
         }
+    }
+
+    public function setData(array $data)
+    {
+        $this->task = $this->taskService->updateTask($this->task->id, ['data' => $data]);
+    }
+
+    public function getData()
+    {
+        return $this->task->data;
     }
 
     public function getCommand()
