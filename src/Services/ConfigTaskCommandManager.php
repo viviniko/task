@@ -2,7 +2,6 @@
 
 namespace Viviniko\Task\Services;
 
-use Viviniko\Task\Contracts\TaskCommandManager;
 use Illuminate\Support\Collection;
 
 class ConfigTaskCommandManager implements TaskCommandManager

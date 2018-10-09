@@ -2,8 +2,6 @@
 
 namespace Viviniko\Task\Services;
 
-use Viviniko\Task\Contracts\TaskCommandManager;
-use Viviniko\Task\Contracts\TaskService as TaskServiceInterface;
 use Viviniko\Task\Repositories\Log\LogRepository;
 use Viviniko\Task\Repositories\Task\TaskRepository;
 use Viviniko\Task\Runable;
@@ -11,7 +9,7 @@ use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 
-class TaskServiceImpl implements TaskServiceInterface
+class TaskServiceImpl implements TaskService
 {
     /**
      * @var \Viviniko\Task\Repositories\Task\TaskRepository
@@ -24,7 +22,7 @@ class TaskServiceImpl implements TaskServiceInterface
     protected $logRepository;
 
     /**
-     * @var \Viviniko\Task\Contracts\TaskCommandManager
+     * @var TaskCommandManager
      */
     protected $taskCommandManager;
 

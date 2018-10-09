@@ -4,7 +4,7 @@ namespace Viviniko\Task;
 
 use Carbon\Carbon;
 use Closure;
-use Viviniko\Task\Contracts\TaskService;
+use Viviniko\Task\Services\TaskService;
 use Viviniko\Task\Enums\TaskMode;
 use Viviniko\Task\Models\Task;
 use Illuminate\Console\Command;
@@ -22,7 +22,7 @@ class Runable
     public $options;
 
     /**
-     * @var \Viviniko\Task\Contracts\TaskService;
+     * @var \Viviniko\Task\Services\TaskService;
      */
     protected $taskService;
 

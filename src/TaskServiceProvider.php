@@ -30,7 +30,7 @@ class TaskServiceProvider extends BaseServiceProvider
         $this->commands('command.task.table');
 
         $this->app->resolving(\Illuminate\Console\Scheduling\Schedule::class, function ($schedule) {
-            $this->app->make(\Viviniko\Task\Contracts\TaskService::class)->schedule($schedule);
+            $this->app->make(\Viviniko\Task\Services\TaskService::class)->schedule($schedule);
         });
     }
 
@@ -82,13 +82,13 @@ class TaskServiceProvider extends BaseServiceProvider
      */
     protected function registerTaskService()
     {
-        $this->app->singleton(\Viviniko\Task\Contracts\TaskCommandManager::class, function ($app) {
+        $this->app->singleton(\Viviniko\Task\Services\TaskCommandManager::class, function ($app) {
             $config = $app['config'];
             return new \Viviniko\Task\Services\ConfigTaskCommandManager($config->get('task.commands', []));
         });
 
         $this->app->singleton('task', \Viviniko\Task\Services\TaskServiceImpl::class);
-        $this->app->alias('task', \Viviniko\Task\Contracts\TaskService::class);
+        $this->app->alias('task', \Viviniko\Task\Services\TaskService::class);
     }
 
     /**
@@ -100,7 +100,7 @@ class TaskServiceProvider extends BaseServiceProvider
     {
         return [
             'task',
-            \Viviniko\Task\Contracts\TaskService::class,
+            \Viviniko\Task\Services\TaskService::class,
         ];
     }
 }

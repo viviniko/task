@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Task\Contracts;
+namespace Viviniko\Task\Services;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;

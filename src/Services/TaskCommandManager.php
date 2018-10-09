@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Task\Contracts;
+namespace Viviniko\Task\Services;
 
 use Illuminate\Support\Collection;
 

@@ -2,18 +2,14 @@
 
 namespace Viviniko\Task\Repositories\Task;
 
-use Viviniko\Repository\SimpleRepository;
+use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\EloquentRepository;
 
-class EloquentTask extends SimpleRepository implements TaskRepository
+class EloquentTask extends EloquentRepository implements TaskRepository
 {
-    protected $modelConfigKey = 'task.task';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function all()
+    public function __construct()
     {
-        return $this->createModel()->newQuery()->get();
+        parent::__construct(Config::get('task.task'));
     }
 
     /**
@@ -21,6 +17,6 @@ class EloquentTask extends SimpleRepository implements TaskRepository
      */
     public function findByCommand($command)
     {
-        return $this->createModel()->newQuery()->where('command', $command)->first();
+        return $this->findBy('command', $command);
     }
 }

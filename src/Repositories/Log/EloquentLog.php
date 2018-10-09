@@ -2,10 +2,13 @@
 
 namespace Viviniko\Task\Repositories\Log;
 
-use Viviniko\Repository\SimpleRepository;
+use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\EloquentRepository;
 
-class EloquentLog extends SimpleRepository implements LogRepository
+class EloquentLog extends EloquentRepository implements LogRepository
 {
-    protected $modelConfigKey = 'task.log';
-
+    public function __construct()
+    {
+        parent::__construct(Config::get('task.log'));
+    }
 }
