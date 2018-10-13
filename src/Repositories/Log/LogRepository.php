@@ -2,9 +2,18 @@
 
 namespace Viviniko\Task\Repositories\Log;
 
+use Viviniko\Repository\SearchRequest;
+
 interface LogRepository
 {
-    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
+    /**
+     * Search.
+     *
+     * @param SearchRequest $searchRequest
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     */
+    public function search(SearchRequest $searchRequest);
 
     /**
      * Find log by its id.
