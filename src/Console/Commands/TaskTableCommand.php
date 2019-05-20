@@ -3,7 +3,7 @@
 namespace Viviniko\Task\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 
 class TaskTableCommand extends Command
