@@ -40,7 +40,7 @@ class TaskServiceImpl implements TaskService
 
     public function getTaskByCommand($command)
     {
-        return $this->taskRepository->findByCommand($command);
+        return $this->taskRepository->findBy('command', $command);
     }
 
     public function updateTask($taskId, array $data)
